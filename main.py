@@ -1,16 +1,24 @@
-# This is a sample Python script.
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def isidentifier(token):
+    for ch in token:
+        if not ch.isalnum() and ch != '_':
+            return False
+    return True
 
+def main():
+    text = input("Enter assignment statement: ")
+    tokens = text.split()
+    state = 0
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    for token in tokens:
+        if state == 0:
+            if not isidentifier(token):
+                break
+            state += 1
+    if state == 1:
+        print("Valid assignment operator")
+    else:
+        print("Invalid assignment operator")
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
